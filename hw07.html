@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <meta charset="utf-8">
+	<title>Задание #.07</title>
+</head>
+
+<body>
+	<h1 align="center">VOWELS</h1>
+		<script>
+			var text=prompt("Введите текст произвольной длинны",' ');
+			var gl={'а':1,'е':2,'ё':3,'и':4,'о':5,'у':6,'ы':7,'э':8,'ю':9,'я':10};
+			var col=0;
+			for (i=0;i<=text.length;i++){
+				var c=text[i];
+				if (c in gl)
+				col++
+			}
+            if (col>0) 
+                alert('Колличество гласных букв в тексте: ' + col)
+            else {
+            alert('Попробуй ещё разок');
+			setTimeout(function(){    
+                location.reload();}, 2000);
+            }
+		</script>
+</body>
+
+</html>

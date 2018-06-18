@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <meta charset="utf-8">
+	<title>Задание #.05</title>
+</head>
+
+<body>
+	<h1 align="center">TREESUM</h1>
+		<script>
+			
+        function treesum(arr){
+                var sum=0;
+                for (var i=0;i<=arr.lenght;i++) {
+                    var item = arr[i];
+                    //if (typeof item == "number")
+                        sum+=item;
+                  // else sum+=treesum(item);
+               }
+                return sum; 
+        }
+        var baq = [2, 5];
+       console.log(treesum(baq));
+      
+		</script>
+</body>
+
+</html>

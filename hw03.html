@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <meta charset="utf-8">
+	<title>Задание #.03</title>
+</head>
+
+<body>
+	<h1 align="center">Анкета</h1>
+		<script>
+			var f1=prompt("Фамилия");
+            while (!f1){
+                f1=prompt("Ввод фамилии обязатлен");
+            }
+			var f2=prompt("Имя",' ');
+			var f3=prompt("Отчество",' ');
+            do {
+                var year=prompt("Ваш возраст");
+                var y=parseInt(year);
+            } while (isNaN(y));
+           // y=+prompt();
+			var sex=confirm("Ваш пол - мужской?");
+			var a;
+			if (sex) { sex = 'мужской';
+				  if (year < 65) {
+					    a = 'нет';} else  {
+							a = 'да';} 
+						} else sex = 'женский'; 
+						if (year < 60) { 
+						a = 'нет'; }else { a = 'да' }
+    alert('ФИО: ' + f1 + ' ' + f2 + ' ' + f3 +'\nвозраст,лет: ' + y
+    +'\nвозраст,дней: ' + y*365 +'\nчерез 5 лет вам буде: '+(y+5)+'\nпол: ' + sex +'\nпенсионный возраст: ' + a)
+			
+		</script>
+</body>
+
+</html>
