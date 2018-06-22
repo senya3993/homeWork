@@ -9,12 +9,17 @@
 <body>
 	<h1 align="center">Анкета</h1>
 		<script>
+			function fio (a) {
+				while (!a){
+                a=prompt("Ввод обязатлен");
+            } return a
+			}
 			var f1=prompt("Фамилия");
-            while (!f1){
-                f1=prompt("Ввод фамилии обязатлен");
-            }
-			var f2=prompt("Имя",' ');
-			var f3=prompt("Отчество",' ');
+            fi=fio(f1);
+			var f2=prompt("Имя");
+			f2=fio(f2);
+			var f3=prompt("Отчество");
+			f3=fio(f3);
             do {
                 var year=prompt("Ваш возраст");
                 var y=parseInt(year);

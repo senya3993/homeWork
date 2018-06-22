@@ -9,19 +9,19 @@
 <body>
 	<h1 align="center">TREESUM</h1>
 		<script>
-			
+			var baq = [2, 5,[6,1],3];
         function treesum(arr){
                 var sum=0;
-                for (var i=0;i<=arr.lenght;i++) {
+                for (var i=0;i<arr.length;i++) {
                     var item = arr[i];
-                    //if (typeof item == "number")
-                        sum+=item;
-                  // else sum+=treesum(item);
+                    if (typeof item == "number"){
+                        sum+=item;}
+                  else sum+=treesum(item);
                }
                 return sum; 
         }
-        var baq = [2, 5];
-       console.log(treesum(baq));
+    console.log(baq);
+    console.log(treesum(baq));
       
 		</script>
 </body>
