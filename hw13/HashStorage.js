@@ -1,17 +1,18 @@
 "use strict";
 function HashStorage (){
-    this.storage = {},
+    this.storage = {};
     this.addValue = function(key,value){
         this.storage[key] = value
-    },
+    };
     this.getValue = function(key){
         return this.storage[key]
-    },
+    };
     this.deleteValue = function(key){
-        if (key in this.storage)
+        if (key in this.storage){
         delete this.storage[key];
-         else return false
-    },
+        return true;
+    } else return false
+    };
     this.getKeys = function(){
         var keys = Object.keys(this.storage);
         return keys
@@ -29,7 +30,8 @@ function addDrink() {
 function getDrink() {
     var drinkName=prompt('Введите название нужного вам напитка',' ');
     if (drinkName in drinkStorage.storage) 
-    alert ('Напиток ' + drinkName + '\nАлкогольный ' + drinkStorage.getValue(drinkName));
+    alert ('Напиток ' + drinkName + '\nАлкогольный ' + drinkStorage.getValue(drinkName).alc + '\nРецепт ' 
+    +drinkStorage.getValue(drinkName).txt);
     else alert('Введенный напиток отсутствует')
 }
 function deleteDrink() {
