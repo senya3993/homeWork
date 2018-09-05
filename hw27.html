@@ -11,10 +11,10 @@
     <table>
     <tr><td>Разработчики:</td><td><input type='text' name='author' style='width: 453px'></td></tr>
     <tr><td>Название сайта:</td><td><input type='text' name='title' style='width: 453px'></td></tr>
-    <tr><td>URL сайта:</td><td><input type='text' name='title' style='width: 300px'></td></tr>
-    <tr><td>Дата запуска сайта:</td><td><input type='text' name='startdate' style='width: 80px'></td></tr>
-    <tr><td>Посетителей в сутки:</td><td><input type='text' name='persons' style='width: 80px'></td></tr>
-    <tr><td>E-mail для связи:</td><td><input type='text' name='title' style='width: 200px'></td></tr>
+    <tr><td>URL сайта:</td><td><input type='text' name='web' placeholder="http://www.example.com" style='width: 300px'></td></tr>
+    <tr><td>Дата запуска сайта:</td><td><input type='date' name='startdate' style='width: 120px'></td></tr>
+    <tr><td>Посетителей в сутки:</td><td><input type='text' name='persons' style='width: 120px'></td></tr>
+    <tr><td>E-mail для связи:</td><td><input type='text' name='email' style='width: 200px'></td></tr>
     <tr><td>Рубрика каталога:</td><td style='padding-left: 1px'>
       <select name='rubric' style='width: 204px; margin-left: 2px'>
       <option value=1>здоровье</option>
@@ -33,7 +33,7 @@
     <tr><td><input type='submit' value='Опубликовать'></td><td></td></tr>
     </table>
     </form>  
-</body>
+
 <script>
 
   "use strict";
@@ -47,22 +47,66 @@
           var formTag=document.forms.INFO;
 
           var authorField=formTag.elements.author; 
-          var authorValue=fioField.value; 
+          var authorValue=authorField.value; 
+
+          var titleField=formTag.elements.title; 
+          var titleValue=titleField.value; 
+
+          var webField=formTag.elements.web; 
+          var webValue=webField.value; 
+          var web=webValue.split("/");
 
           var personsField=formTag.elements.persons;
           var personsValue=parseInt(personsField.value.trim()); 
+
+          var emailField=formTag.elements.email; 
+          var emailValue=emailField.value; 
 
           var commentsField=formTag.elements.comments;
           var commentsValue=commentsField.checked; 
 
           var rubricField=formTag.elements.rubric;
-          var rubricValue=drubricField.value; 
+          var rubricValue=rubricField.value; 
           var lpublicField=formTag.elements.public;
           var publicValue=lpublicField.value; 
+
+          if ( authorValue=="" ) { 
+                alert('Введите хотя бы одну фвмилию!');
+                authorField.focus();
+                EO.preventDefault(); 
+                return;
+          }
+
+          if ( (titleValue=="") || (titleValue.length>50) ) { 
+                alert('Название сайта и компактость его записи необходимы!');
+                titleField.focus();
+                EO.preventDefault(); 
+                return;
+          }
+
+          if (( web[0]!=="http:" ) || (web[1]="")){ 
+                alert('Добавьте URL. \nПример заполнения: "http://www.example.com".');
+                webField.focus();
+                EO.preventDefault(); 
+                return;
+          }
 
           if ( isNaN(personsValue) ) {
               alert('Введите пожалуйста в поле корректную цифру!');
               personsField.focus();
+              EO.preventDefault(); 
+              return;
+          }
+
+          if ( emailValue=="" ) { 
+                alert('Введите E-mail!');
+                emailField.focus();
+                EO.preventDefault(); 
+                return;
+          }
+
+          if ( publicValue=="") {
+              alert('Вы не выбрали тип размещения!');
               EO.preventDefault(); 
               return;
           }
@@ -73,19 +117,13 @@
               EO.preventDefault(); 
               return;
           }
-
-          if ( publicValue=="" ) {
-              alert('Вы не выбрали тип размещения!');
-              document.getElementById('pub1').scrollIntoView();
-              EO.preventDefault(); 
-              return;
-          }
-
       }
       catch ( ex ) {
           EO.preventDefault(); 
       }
+      alert('Cпасибо! С вами свяжутся по введенному E-mail'); 
   }
 
 </script>
+</body>
 </html>
