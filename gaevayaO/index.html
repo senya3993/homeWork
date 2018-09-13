@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>LogIn Form</title>
+<link rel="stylesheet" href="css/style.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div onclick="setInterval(draw, 10)" id="login-button">
+  <img  src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+  </img>
+</div>
+<div id="container">
+  <h1>Log In</h1>
+  <form id='ITEST' action='gamer.html'>
+    <input type="text" name="ksyname" placeholder="Name">
+    <input type="text" name="ksyage" placeholder="Age">
+    <h1>YOUR PREFERENCES</h1>
+    <select name="ksyfon">
+      <option value=galaxy selected>galaxy</option>
+      <option value=jungle>jungle</option>
+      <option value=street>street</option>
+      </select><br />
+<select name="ksysize">
+        <option value=3*5 selected>3x5</option>
+        <option value=4*5>4x5</option>
+        <option value=5*5 >5x5</option>
+</select><br />
+
+<input type='submit' style="border: 3px solid black"  value='Log in'>
+    <div id="remember-container">
+      <input name="ksyreg" type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
+      <span id="remember">Remember me</span>
+    </div>
+</form>
+</div>
+<canvas id="myCanvas" width="250" height="310"> </canvas> 
+<script src="js/mobile.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
+<script src="js/fon.js" defer></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js' ></script>  
+  <script src="js/index.js"></script>
+    <script>
+
+$('#ITEST').submit(validateTestForm);
+function validateTestForm(EO) {
+    var formJ=$('#ITEST'); 
+    var FIOJ=formJ.find('[name=ksyname]'); 
+    var ageJ=formJ.find('[name=ksyage]'); 
+    var FIOValue=FIOJ.val();
+    var hi = new RegExp("^.*[^a-z].+$");
+    var ageValue=ageJ.val();
+    if ( !FIOValue.length ) {
+            alert('Hi! Your name?');
+            FIOJ.focus();
+            return false; 
+        }
+        
+        if ( hi.test(FIOValue)) {
+            alert('Incorrect name!');
+            FIOJ.focus();
+            return false; 
+        }
+    
+    if ( !isFinite(ageValue))  {
+        alert('Введите пожалуйста в поле возраста корректную цифру!');
+        ageJ.focus();
+        return false;
+    }
+    if ( ageValue<5 ) {
+        alert('Возраст должен быть не менее 5 лет!');
+        ageJ.focus();
+        return false;
+    }
+      return true; 
+}
+ </script>
+
+</body>
+</html>
